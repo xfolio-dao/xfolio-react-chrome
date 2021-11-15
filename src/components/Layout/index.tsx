@@ -6,11 +6,11 @@ interface Props {
     children: React.ReactNode
 }
 
-const DefaultLayout: React.FC<Props> = ({children}) => {
+const DefaultLayout: React.FC<Props> = ({ children }) => {
     return(
         <div>
             <Header/>
-                {children}
+            {children}
             <Footer/>
         </div>
     )

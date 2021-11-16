@@ -6,13 +6,6 @@ import Settings from './pages/settings'
 
 const App = () => {
     return (
-    // <DefaultLayout>
-    //     {/* <div className="container h-[475]">
-    //         <p>
-    //         Welcome to Xfolio!
-    //         </p>
-    //     </div> */}
-    // </DefaultLayout>
         <Router
             initialEntries={['/login','/wallet']}
             initialIndex={0}

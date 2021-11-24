@@ -5,6 +5,7 @@ import Login from './pages/login'
 import Settings from './pages/settings'
 import { WalletContext } from './context/walletContext'
 import { useDefineWalletContext } from './hooks'
+import Mnemonic from './pages/login/mnemonic'
 
 const App = () => {
     const walletContextValue = useDefineWalletContext()
@@ -12,7 +13,7 @@ const App = () => {
     return (
         <WalletContext.Provider value={walletContextValue}>
             <Router
-                initialEntries={['/login','/wallet']}
+                initialEntries={['/login']}
                 initialIndex={0}
             >
                 <Fragment>
@@ -20,6 +21,10 @@ const App = () => {
                         <Route path='/login' element={ <Login/> }/>
                         <Route path='/wallet' element={ <Wallet/> }/>
                         <Route path='/settings' element={ <Settings/> }/>
+                        <Route path='/mnemonic'>
+                            <Route path=':status' element={ <Mnemonic/> }/>
+                        </Route>
+                        
                     </Routes>
                 </Fragment>
             </Router>

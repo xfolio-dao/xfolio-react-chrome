@@ -3,13 +3,15 @@ import SimpleLayout from '../../components/Layout/simple'
 import { useNavigate } from 'react-router-dom'
 import { useWalletContextValue } from '../../hooks'
 import Button from '../../components/Button'
+import logo256 from '../../assets/xfolio256.png'
 
 const SignUpForm:React.FC = () => {
     const navigate = useNavigate()
 
     return (
         <div className='flex flex-col h-[100%] justify-center items-center'>
-            <p>Welcome to Xfolio Chrome friend!</p>
+            <img src={logo256} alt='Xfolio Logo 256 px'></img>
+            <p className='text-3xl mb-3.5'>Welcome to Xfolio!</p>
             <Button text='Create a wallet' handleClick={() => navigate('/mnemonic/create')}/>
             <Button text='Import a wallet' handleClick={() => navigate('/mnemonic/import')}/>
         </div>

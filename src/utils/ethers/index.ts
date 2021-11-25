@@ -22,6 +22,12 @@ export const connectWalletToNetwork = (wallet:Wallet, networkName:SupportedNetwo
     return wallet.connect(newAlchemyProvider)
 }
 
+export const createConnectedRandomWallet = (networkName:SupportedNetworkName):Wallet => {
+    const newWallet = createRandomWallet()
+    const newAlchemyProvider = createAlchemyProvider(networkName)
+    return newWallet.connect(newAlchemyProvider)
+}
+
 export const createConnectedWalletFromMnemonic = (mnemonic:string, networkName:SupportedNetworkName):Wallet => {
     const newAlchemyProvider = createAlchemyProvider(networkName)
     return ethers.Wallet.fromMnemonic(mnemonic).connect(newAlchemyProvider)

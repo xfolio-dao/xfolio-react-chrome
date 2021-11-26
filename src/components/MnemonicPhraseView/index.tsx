@@ -1,24 +1,5 @@
 import React from 'react'
 
-// const styles = {
-//     word: {
-//         borderRadius: 5,
-//         // marginVertical: theme.distance.small,
-//         // marginHorizontal: theme.distance.tiny,
-//         marginBottom: theme.distance.small,
-//         marginLeft: theme.distance.tiny,
-//         padding: theme.distance.tiny,
-//         borderWidth: 2,
-//         borderColor: 'rgb(41 172 222 / 50%)',
-//         borderStyle: 'groove',
-//         backgroundColor: theme.colors.darkBrown,
-//         color: theme.colors.textWhite,
-//         fontSize: theme.fontsize.normal,
-
-//     }
-// }
-
-
 const MnemonicPhraseView:React.FC<{phrase: string}> = ({ phrase }) => {
     if (phrase === '') return null
     const mnemonicPhrase = phrase.split(" ",12)

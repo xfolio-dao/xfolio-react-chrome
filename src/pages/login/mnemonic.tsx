@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import SimpleLayout from '../../components/Layout/simple'
 import { useWalletContextValue } from '../../hooks'
 import { createConnectedRandomWallet } from '../../utils/ethers'
 import MnemonicPhraseView from '../../components/MnemonicPhraseView'
+import Button from '../../components/Button'
 
 const CreateWalletForm:React.FC = () => {
     const [mnemonic, setMnemonic] = useState('')
+    const navigate = useNavigate()
     const { setWallet } = useWalletContextValue()
 
     useEffect(() => {
@@ -16,9 +18,10 @@ const CreateWalletForm:React.FC = () => {
     },[])
 
     return(
-        <div>
+        <div className='flex flex-col justify-center items-center'>
             <p>Your mnemonic is:</p>
             <MnemonicPhraseView phrase={mnemonic}/>
+            <Button text='Set up your password' handleClick={() => navigate('/setPassword')}/>
         </div> 
     )
 }

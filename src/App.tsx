@@ -7,12 +7,13 @@ import { WalletContext } from './context/walletContext'
 import { useDefineWalletContext } from './hooks'
 import Mnemonic from './pages/login/mnemonic'
 import SetPassword from './pages/login/setPassword'
+import { WalletContextType } from './types'
 
 const App = () => {
     const walletContextValue = useDefineWalletContext()
 
     return (
-        <WalletContext.Provider value={walletContextValue}>
+        <WalletContext.Provider value={walletContextValue as WalletContextType}>
             <Router
                 initialEntries={['/login']}
                 initialIndex={0}

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { useWalletContextValue } from '../../hooks'
 import Button from '../../components/Button'
 import logo256 from '../../assets/xfolio256.png'
+import InputPasswordForm from '../../components/Input/inputPasswordForm'
+import { createConnectedWalletFromJson } from '../../utils/ethers'
 
 const SignUpForm:React.FC = () => {
     const navigate = useNavigate()
@@ -19,9 +21,24 @@ const SignUpForm:React.FC = () => {
 }
 
 const LoginForm:React.FC = () => {
+    const navigate = useNavigate()
+    const { jsonWallet, setWallet } = useWalletContextValue()
+
+    const onSubmit = async ({ password }: {password:string}) => {
+        try {
+            const generatedWallet = await createConnectedWalletFromJson(jsonWallet,password,'mainnet')
+            setWallet(generatedWallet)
+            navigate('/wallet')
+        }
+        catch (e) {
+            console.error(e)
+        }
+    }
+
     return (
-        <div>
-            <input placeholder='Input your password here'></input>
+        <div className='flex flex-col h-[100%] justify-center items-center'>
+            {/* <input placeholder='Input your password here'></input> */}
+            <InputPasswordForm onSubmit={onSubmit}/>
             <Button text='Forgot your password?'/>
         </div>
     )

@@ -1,3 +1,5 @@
+import { Wallet } from 'ethers'
+
 export type SupportedNetworkName = 'mainnet' | 'arbitrum' | 'optimism'
 
 interface WalletContextType {

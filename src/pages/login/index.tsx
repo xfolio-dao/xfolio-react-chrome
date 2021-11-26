@@ -12,10 +12,8 @@ const SignUpForm:React.FC = () => {
 
     return (
         <>
-            {/* <div className='flex flex-col h-[100%] justify-center items-center'> */}
             <Button text='Create a wallet' handleClick={() => navigate('/mnemonic/create')}/>
             <Button text='Import a wallet' handleClick={() => navigate('/mnemonic/import')}/>
-            {/* </div> */}
         </>
     )
 }
@@ -23,7 +21,6 @@ const SignUpForm:React.FC = () => {
 const LoginForm:React.FC = () => {
     const navigate = useNavigate()
     const { jsonWallet, setWallet } = useWalletContextValue()
-
     const onSubmit = async ({ password }: {password:string}) => {
         try {
             const generatedWallet = await createConnectedWalletFromJson(jsonWallet,password,'mainnet')
@@ -37,11 +34,8 @@ const LoginForm:React.FC = () => {
 
     return (
         <>
-            {/* <div className='flex flex-col h-[100%] justify-center items-center'> */}
-            {/* <input placeholder='Input your password here'></input> */}
             <InputPasswordForm onSubmit={onSubmit}/>
             <Button text='Forgot your password?'/>
-            {/* </div> */}
         </>
     )
 }
@@ -60,7 +54,6 @@ const Login:React.FC = () => {
                             ? <SignUpForm/>
                             : <LoginForm/>
                     }
-                    {/* <Link to='/wallet'>Sign me in!</Link> */}
                 </div>
             </div>
         </SimpleLayout>

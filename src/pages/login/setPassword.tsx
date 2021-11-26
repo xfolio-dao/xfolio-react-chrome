@@ -2,6 +2,7 @@ import React from 'react'
 import SetPasswordForm from '../../components/Input/setPasswordForm'
 import { useNavigate } from 'react-router-dom'
 import { useWalletContextValue } from '../../hooks'
+import SimpleLayout from '../../components/Layout/simple'
 
 const SetPassword:React.FC = () => {
     const navigate = useNavigate()
@@ -20,9 +21,9 @@ const SetPassword:React.FC = () => {
     }
 
     return (
-        <div>
+        <SimpleLayout>
             <SetPasswordForm onSubmit={onSubmit}/>
-        </div>
+        </SimpleLayout>
     )
 }
 

@@ -8,11 +8,13 @@ export const useLocalStorage = (storageKey:string) => {
     const setValue = (value:any) => {
         try {
             // Allow value to be a function so we have same API as useState
-            // const valueToStore = value instanceof Function ? value(storedValue) : value
-            const valueToStore = value
-            // Save to local storage
-            // window.localStorage.setItem(storageKey, JSON.stringify(valueToStore))
-            window.localStorage.setItem(storageKey, valueToStore)
+            const valueToStore = value instanceof Function ? value(storedValue) : value
+            if (typeof valueToStore === 'string') {
+                window.localStorage.setItem(storageKey, valueToStore)
+            }
+            else {
+                window.localStorage.setItem(storageKey, JSON.stringify(valueToStore))
+            }
             // Save state
             setStoredValue(valueToStore)
         } catch (error) {
@@ -27,10 +29,14 @@ export const useSessionStorage = (storageKey:string) => {
     const [storedValue, setStoredValue] = useState(returnInitialSessionState(storageKey))
     const setValue = (value:any) => {
         try {
-        // Allow value to be a function so we have same API as useState
             const valueToStore = value instanceof Function ? value(storedValue) : value
             // Save to local storage
-            window.sessionStorage.setItem(storageKey, JSON.stringify(valueToStore))
+            if (typeof valueToStore === 'string') {
+                window.sessionStorage.setItem(storageKey, valueToStore)
+            }
+            else {
+                window.sessionStorage.setItem(storageKey, JSON.stringify(valueToStore))
+            }
             // Save state
             setStoredValue(valueToStore)
         } catch (error) {
@@ -42,8 +48,6 @@ export const useSessionStorage = (storageKey:string) => {
 }
 
 export const useDefineWalletContext = () => {
-    // const [jsonWallet, setJsonWallet] = useState<string>('')
-    // const [wallet, setWallet] = useState<undefined | Wallet>(undefined)
     const [jsonWallet, setJsonWallet] = useLocalStorage('jsonWallet')
     const [wallet, setWallet] = useSessionStorage('wallet')
 

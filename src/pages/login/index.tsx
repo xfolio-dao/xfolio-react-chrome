@@ -23,6 +23,8 @@ const LoginForm:React.FC = () => {
     const { jsonWallet, setWallet } = useWalletContextValue()
     const onSubmit = async ({ password }: {password:string}) => {
         try {
+            console.log(`jsonWallet is ${jsonWallet}`)
+            console.log(jsonWallet)
             const generatedWallet = await createConnectedWalletFromJson(jsonWallet,password,'mainnet')
             setWallet(generatedWallet)
             navigate('/wallet')
@@ -50,7 +52,7 @@ const Login:React.FC = () => {
                     <img src={logo256} alt='Xfolio Logo 256 px'></img>
                     <p className='text-3xl mb-3.5'>Welcome to Xfolio!</p>
                     {
-                        jsonWallet === '' 
+                        (jsonWallet === '' || jsonWallet === null)
                             ? <SignUpForm/>
                             : <LoginForm/>
                     }

@@ -2,7 +2,7 @@ import React from 'react'
 import * as yup from 'yup'
 import { Formik, Form } from 'formik'
 import FormikTextInput from './formikTextInput'
-import SimpleButton from '../SimpleButton'
+import Button from '../Button'
 
 const validationSchema = yup.object().shape({
     password: yup
@@ -21,7 +21,7 @@ const InputPasswordForm:React.FC<{onSubmit: ({ password }: {password:string}) =>
                             <FormikTextInput name='password' placeholder='Input your password here...' type='password'/>
                         </div>
                     </div>
-                    <SimpleButton type='submit' text='Log In'> Log In </SimpleButton>
+                    <Button type='submit' text='Log In'> Log In </Button>
                 </Form>
             </Formik>
         </>

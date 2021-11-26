@@ -6,6 +6,7 @@ import Settings from './pages/settings'
 import { WalletContext } from './context/walletContext'
 import { useDefineWalletContext } from './hooks'
 import Mnemonic from './pages/login/mnemonic'
+import SetPassword from './pages/login/setPassword'
 
 const App = () => {
     const walletContextValue = useDefineWalletContext()
@@ -24,7 +25,7 @@ const App = () => {
                         <Route path='/mnemonic'>
                             <Route path=':status' element={ <Mnemonic/> }/>
                         </Route>
-                        
+                        <Route path='/setPassword' element={ <SetPassword/> }/>
                     </Routes>
                 </Fragment>
             </Router>

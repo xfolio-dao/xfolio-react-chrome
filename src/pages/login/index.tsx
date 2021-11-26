@@ -46,7 +46,7 @@ const Login:React.FC = () => {
     return( 
         <SimpleLayout>
             <div className='container h-[475px]'>
-                <div className='flex flex-col h-[100%] justify-center items-center'>
+                <div className='flex flex-col h-[100%] justify-start items-center'>
                     <img src={logo256} alt='Xfolio Logo 256 px'></img>
                     <p className='text-3xl mb-3.5'>Welcome to Xfolio!</p>
                     {

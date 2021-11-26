@@ -2,6 +2,7 @@ import React from 'react'
 import * as yup from 'yup'
 import { Formik, Form } from 'formik'
 import FormikTextInput from './formikTextInput'
+import Button from '../Button'
 
 
 const validationSchema = yup.object().shape({
@@ -28,7 +29,7 @@ const SetPasswordForm:React.FC<{onSubmit: ({ password }: {password:string}) => P
                             <FormikTextInput name='passwordConfirmation' placeholder='Confirm your password...' type='password'/>
                         </div>
                     </div>
-                    <button type='submit'> Submit </button>
+                    <Button type='submit' text='Submit'> Submit </Button>
                 </Form>
             </Formik>
         </>

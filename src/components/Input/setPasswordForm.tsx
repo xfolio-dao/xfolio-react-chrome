@@ -20,7 +20,7 @@ const SetPasswordForm:React.FC<{onSubmit: ({ password }: {password:string}) => P
         <> 
             <Formik  onSubmit={onSubmit} initialValues={{ password:'', passwordConfirmation: '' }} validationSchema={validationSchema}>
                 <Form>
-                    <div>
+                    <div className='flex flex-col justify-center items-center'>
                         <div>
                             <FormikTextInput name='password' placeholder='Input your password here...' type='password'/>
                         </div>

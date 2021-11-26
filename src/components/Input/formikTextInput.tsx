@@ -14,6 +14,7 @@ const FormikTextInput:React.FC<{name:string, placeholder:string,type:string,styl
                 value={field.value}
                 style={style ? style : {}}
                 type={type}
+                className='text-[18px] rounded-sm border-2 border-black my-2'
             />
             {meta.touched && meta.error ? (
                 <div className='text-red-600'>{meta.error}</div>
@@ -22,4 +23,4 @@ const FormikTextInput:React.FC<{name:string, placeholder:string,type:string,styl
     )
 }
 
-export default FormikTextInput
+export default FormikTextInput 

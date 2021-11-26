@@ -15,12 +15,12 @@ const InputPasswordForm:React.FC<{onSubmit: ({ password }: {password:string}) =>
         <> 
             <Formik  onSubmit={onSubmit} initialValues={{ password:'', passwordConfirmation: '' }} validationSchema={validationSchema}>
                 <Form>
-                    <div>
+                    <div className='flex flex-col justify-center items-center'>
                         <div>
                             <FormikTextInput name='password' placeholder='Input your password here...' type='password'/>
                         </div>
                     </div>
-                    <button type='submit'> Login </button>
+                    <button type='submit'> Log In </button>
                 </Form>
             </Formik>
         </>

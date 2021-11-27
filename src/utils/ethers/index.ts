@@ -6,37 +6,37 @@ export const createRandomWallet = ():Wallet => {
     return ethers.Wallet.createRandom()
 }
 
-export const createAlchemyProvider = (networkName:SupportedNetworkName):ethers.providers.AlchemyProvider => {
+export const createJsonRpcProvider = (networkName:SupportedNetworkName):ethers.providers.JsonRpcProvider => {
     switch(networkName) {
     case 'mainnet':
-        return new ethers.providers.AlchemyProvider('homestead',MAINNET_API_KEY)
+        return new ethers.providers.JsonRpcProvider(MAINNET_API_KEY)
     case 'arbitrum':
-        return new ethers.providers.AlchemyProvider('arbitrum_mainnet',ARBITRUM_API_KEY)
+        return new ethers.providers.JsonRpcProvider(ARBITRUM_API_KEY)
     case 'optimism':
-        return new ethers.providers.AlchemyProvider('optimism_mainnet',OPTIMISM_API_KEY)
+        return new ethers.providers.JsonRpcProvider(OPTIMISM_API_KEY)
     }
 }
 
 export const connectWalletToNetwork = (wallet:Wallet, networkName:SupportedNetworkName):Wallet => {
-    const newAlchemyProvider = createAlchemyProvider(networkName)
-    return wallet.connect(newAlchemyProvider)
+    const jsonRpcProvider = createJsonRpcProvider(networkName)
+    return wallet.connect(jsonRpcProvider)
 }
 
 export const createConnectedRandomWallet = (networkName:SupportedNetworkName):Wallet => {
     const newWallet = createRandomWallet()
-    const newAlchemyProvider = createAlchemyProvider(networkName)
-    return newWallet.connect(newAlchemyProvider)
+    const jsonRpcProvider = createJsonRpcProvider(networkName)
+    return newWallet.connect(jsonRpcProvider)
 }
 
 export const createConnectedWalletFromMnemonic = (mnemonic:string, networkName:SupportedNetworkName):Wallet => {
-    const newAlchemyProvider = createAlchemyProvider(networkName)
-    return ethers.Wallet.fromMnemonic(mnemonic).connect(newAlchemyProvider)
+    const jsonRpcProvider = createJsonRpcProvider(networkName)
+    return ethers.Wallet.fromMnemonic(mnemonic).connect(jsonRpcProvider)
 }
 
 export const createConnectedWalletFromJson = async (jsonWallet:string, password:string, networkName:SupportedNetworkName):Promise<Wallet> => {
-    const newAlchemyProvider = createAlchemyProvider(networkName)
+    const jsonRpcProvider = createJsonRpcProvider(networkName)
     const fromJsonWallet = await ethers.Wallet.fromEncryptedJson(jsonWallet,password)
-    return fromJsonWallet.connect(newAlchemyProvider)
+    return fromJsonWallet.connect(jsonRpcProvider)
 } 
 
 export const getTokenLogoURL = (address: string):string => {

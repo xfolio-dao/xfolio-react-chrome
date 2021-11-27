@@ -35,7 +35,7 @@ const LoginForm:React.FC = () => {
     return (
         <>
             <InputPasswordForm onSubmit={onSubmit}/>
-            <Button text='Forgot your password?'/>
+            <Button text='Forgot your password?' handleClick={() => navigate('/mnemonic/import')}/>
         </>
     )
 }

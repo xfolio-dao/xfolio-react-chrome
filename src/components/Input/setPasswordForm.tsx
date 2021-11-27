@@ -3,6 +3,7 @@ import * as yup from 'yup'
 import { Formik, Form } from 'formik'
 import FormikTextInput from './formikTextInput'
 import Button from '../Button'
+import { Text3Xl } from '../Text'
 
 
 const validationSchema = yup.object().shape({
@@ -21,7 +22,8 @@ const SetPasswordForm:React.FC<{onSubmit: ({ password }: {password:string}) => P
         <> 
             <Formik  onSubmit={onSubmit} initialValues={{ password:'', passwordConfirmation: '' }} validationSchema={validationSchema}>
                 <Form>
-                    <div className='flex flex-col justify-center items-center'>
+                    <div className='flex flex-col justify-start items-center'>
+                        <Text3Xl text='Set up your password:'/>
                         <div>
                             <FormikTextInput name='password' placeholder='Input your password here...' type='password'/>
                         </div>

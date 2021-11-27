@@ -6,14 +6,25 @@ export const createRandomWallet = ():Wallet => {
     return ethers.Wallet.createRandom()
 }
 
-export const createAlchemyProvider = (networkName:SupportedNetworkName):ethers.providers.AlchemyProvider => {
+// export const createAlchemyProvider = (networkName:SupportedNetworkName):ethers.providers.AlchemyProvider => {
+//     switch(networkName) {
+//     case 'mainnet':
+//         return new ethers.providers.AlchemyProvider('homestead',MAINNET_API_KEY)
+//     case 'arbitrum':
+//         return new ethers.providers.AlchemyProvider('arbitrum_mainnet',ARBITRUM_API_KEY)
+//     case 'optimism':
+//         return new ethers.providers.AlchemyProvider('optimism_mainnet',OPTIMISM_API_KEY)
+//     }
+// }
+
+export const createAlchemyProvider = (networkName:SupportedNetworkName):ethers.providers.JsonRpcProvider => {
     switch(networkName) {
     case 'mainnet':
-        return new ethers.providers.AlchemyProvider('homestead',MAINNET_API_KEY)
+        return new ethers.providers.JsonRpcProvider(MAINNET_API_KEY)
     case 'arbitrum':
-        return new ethers.providers.AlchemyProvider('arbitrum_mainnet',ARBITRUM_API_KEY)
+        return new ethers.providers.JsonRpcProvider(ARBITRUM_API_KEY)
     case 'optimism':
-        return new ethers.providers.AlchemyProvider('optimism_mainnet',OPTIMISM_API_KEY)
+        return new ethers.providers.JsonRpcProvider(OPTIMISM_API_KEY)
     }
 }
 
